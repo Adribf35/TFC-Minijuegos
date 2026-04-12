@@ -5,19 +5,19 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema tfc_minijuegos
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema tfc_minijuegos
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `tfc_minijuegos` DEFAULT CHARACTER SET utf8 ;
+USE `tfc_minijuegos` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`usuario`
+-- Table `tfc_minijuegos`.`usuario`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`usuario` (
+CREATE TABLE IF NOT EXISTS `tfc_minijuegos`.`usuario` (
   `id_usuario` INT NOT NULL AUTO_INCREMENT,
   `nombre_usuario` VARCHAR(50) NOT NULL,
   `email` VARCHAR(100) NOT NULL,
@@ -28,9 +28,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`juego`
+-- Table `tfc_minijuegos`.`juego`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`juego` (
+CREATE TABLE IF NOT EXISTS `tfc_minijuegos`.`juego` (
   `id_juego` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(50) NOT NULL,
   `descripcion` VARCHAR(255) NULL,
@@ -40,9 +40,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`partida`
+-- Table `tfc_minijuegos`.`partida`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`partida` (
+CREATE TABLE IF NOT EXISTS `tfc_minijuegos`.`partida` (
   `id_partida` INT NOT NULL AUTO_INCREMENT,
   `id_usuario` INT NOT NULL,
   `id_juego` INT NOT NULL,
@@ -55,21 +55,21 @@ CREATE TABLE IF NOT EXISTS `mydb`.`partida` (
   INDEX `fk_partida_juego` (`id_juego` ASC) ,
   CONSTRAINT `fk_partida_usuario`
     FOREIGN KEY (`id_usuario`)
-    REFERENCES `mydb`.`usuario` (`id_usuario`)
+    REFERENCES `tfc_minijuegos`.`usuario` (`id_usuario`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_partida_juego1`
     FOREIGN KEY (`id_juego`)
-    REFERENCES `mydb`.`juego` (`id_juego`)
+    REFERENCES `tfc_minijuegos`.`juego` (`id_juego`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`ranking_diario`
+-- Table `tfc_minijuegos`.`ranking_diario`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`ranking_diario` (
+CREATE TABLE IF NOT EXISTS `tfc_minijuegos`.`ranking_diario` (
   `id_ranking` INT NOT NULL AUTO_INCREMENT,
   `id_juego` INT NOT NULL,
   `fecha` DATE NULL,
@@ -78,16 +78,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`ranking_diario` (
   INDEX `fk_juego_ranking` (`id_juego` ASC),
   CONSTRAINT `fk_ranking_diario_juego1`
     FOREIGN KEY (`id_juego`)
-    REFERENCES `mydb`.`juego` (`id_juego`)
+    REFERENCES `tfc_minijuegos`.`juego` (`id_juego`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`puntuacion_ranking`
+-- Table `tfc_minijuegos`.`puntuacion_ranking`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`puntuacion_ranking` (
+CREATE TABLE IF NOT EXISTS `tfc_minijuegos`.`puntuacion_ranking` (
   `id_puntuacion_ranking` INT NOT NULL AUTO_INCREMENT,
   `id_ranking` INT NOT NULL,
   `id_usuario` INT NOT NULL,
@@ -100,12 +100,12 @@ CREATE TABLE IF NOT EXISTS `mydb`.`puntuacion_ranking` (
   UNIQUE INDEX `unique_usuario_ranking` (`id_ranking` ASC, `id_usuario` ASC),
   CONSTRAINT `fk_puntuacion_ranking_usuario1`
     FOREIGN KEY (`id_usuario`)
-    REFERENCES `mydb`.`usuario` (`id_usuario`)
+    REFERENCES `tfc_minijuegos`.`usuario` (`id_usuario`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_puntuacion_ranking_ranking_diario1`
     FOREIGN KEY (`id_ranking`)
-    REFERENCES `mydb`.`ranking_diario` (`id_ranking`)
+    REFERENCES `tfc_minijuegos`.`ranking_diario` (`id_ranking`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
