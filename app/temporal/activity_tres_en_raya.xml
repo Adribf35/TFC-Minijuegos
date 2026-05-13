@@ -52,11 +52,13 @@
         <Button android:id="@+id/btn_8" android:layout_width="100dp" android:layout_height="100dp" android:layout_margin="4dp" android:background="@drawable/bordeazul" android:textColor="#000000" android:textSize="32sp" app:backgroundTint="@null" />
     </GridLayout>
 
-    <!-- PANEL DE VICTORIA (Estilo exacto al de PPT) -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/panelVictoria"
         android:layout_width="391dp"
         android:layout_height="735dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="10dp"
         android:background="@drawable/shadow_bottom2"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
@@ -64,57 +66,85 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewTitle">
 
         <TextView
-            android:id="@+id/tvWinTitle"
+            android:id="@+id/textView16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="64dp"
             android:text="¡Enhorabuena!"
             android:textSize="48sp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/ivWinGif"
+            android:id="@+id/imageView3"
+            android:layout_width="102dp"
+            android:layout_height="176dp"
+            android:layout_marginTop="104dp"
+            android:layout_marginEnd="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/decoracion" />
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="101dp"
+            android:layout_height="178dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="104dp"
+            android:scaleX="-1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/decoracion" />
+
+        <ImageView
+            android:id="@+id/imageView7"
             android:layout_width="212dp"
             android:layout_height="179dp"
+            android:layout_marginStart="88dp"
             android:layout_marginTop="48dp"
             android:src="@drawable/palmas"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvWinTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
         <TextView
-            android:id="@+id/tvPoints"
+            android:id="@+id/textView17"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="128dp"
             android:layout_marginTop="48dp"
             android:text="+100 pts"
             android:textSize="34sp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivWinGif" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView7" />
 
         <Button
-            android:id="@+id/btnVolverMenu"
+            android:id="@+id/button"
             android:layout_width="235dp"
             android:layout_height="53dp"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginStart="76dp"
             android:layout_marginTop="56dp"
             android:backgroundTint="#000000"
             android:text="VOLVER AL MENU"
+            android:textAllCaps="true"
             android:textColor="#FFFFFF"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:cornerRadius="30dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:elevation="4dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvPoints" />
+            app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- PANEL DE EMPATE -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/panelEmpate"
         android:layout_width="391dp"
         android:layout_height="735dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="10dp"
         android:background="@drawable/shadow_bottom2"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
@@ -122,38 +152,120 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewTitle">
 
         <TextView
-            android:id="@+id/tvDrawTitle"
+            android:id="@+id/textView20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
             android:layout_marginTop="64dp"
             android:text="¡Empate!"
             android:textSize="48sp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/ivDrawGif"
+            android:id="@+id/imageView77"
             android:layout_width="212dp"
             android:layout_height="179dp"
+            android:layout_marginStart="88dp"
             android:layout_marginTop="48dp"
             android:src="@drawable/guantes"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvDrawTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/textView20" />
+
+        <TextView
+            android:id="@+id/textView177"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="136dp"
+            android:layout_marginTop="48dp"
+            android:text="+30 pts"
+            android:textSize="34sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView77" />
 
         <Button
-            android:id="@+id/btnVolverMenuEmpate"
+            android:id="@+id/button2"
             android:layout_width="235dp"
             android:layout_height="53dp"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginStart="76dp"
+            android:layout_marginTop="18dp"
+            android:backgroundTint="#000000"
+            android:text="VOLVER AL MENU"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:cornerRadius="30dp"
+            app:elevation="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView177" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/panelDerrota"
+        android:layout_width="391dp"
+        android:layout_height="735dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/shadow_bottom2"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitle">
+
+        <TextView
+            android:id="@+id/textView200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="88dp"
+            android:layout_marginTop="68dp"
+            android:text="Perdiste..."
+            android:textSize="48sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView777"
+            android:layout_width="212dp"
+            android:layout_height="179dp"
+            android:layout_marginStart="88dp"
+            android:layout_marginTop="48dp"
+            android:src="@drawable/_0a2461a_296c_4ea5_a16f_8271f3b7da9b"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView200" />
+
+        <TextView
+            android:id="@+id/textView1777"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="148dp"
+            android:layout_marginTop="48dp"
+            android:text="+0 pts"
+            android:textSize="34sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView777" />
+
+        <Button
+            android:id="@+id/button22"
+            android:layout_width="235dp"
+            android:layout_height="53dp"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginStart="76dp"
             android:layout_marginTop="56dp"
             android:backgroundTint="#000000"
             android:text="VOLVER AL MENU"
+            android:textAllCaps="true"
             android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:cornerRadius="30dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:elevation="4dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivDrawGif" />
+            app:layout_constraintTop_toBottomOf="@+id/textView1777" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
