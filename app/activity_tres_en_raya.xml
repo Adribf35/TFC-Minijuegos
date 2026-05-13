@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".games.tresenraya.TresEnRaya">
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:gravity="center"
+        android:text="Tres en Raya"
+        android:textSize="24sp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="Tu turno (X)"
+        android:textSize="34sp"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
+
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:columnCount="3"
+        android:rowCount="3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvStatus">
+
+        <!-- Se eliminó el estilo Borderless para que el background funcione correctamente -->
+        <Button android:id="@+id/btn_0" android:layout_width="100dp" android:layout_height="100dp" android:layout_margin="4dp" android:background="@drawable/bordeazul" android:textColor="#000000" android:textSize="32sp" app:backgroundTint="@null" />
+        <Button android:id="@+id/btn_1" android:layout_width="100dp" android:layout_height="100dp" android:layout_margin="4dp" android:background="@drawable/bordeamarillo" android:textColor="#000000" android:textSize="32sp" app:backgroundTint="@null" />
+        <Button android:id="@+id/btn_2" android:layout_width="100dp" android:layout_height="100dp" android:layout_margin="4dp" android:background="@drawable/borderosa" android:textColor="#000000" android:textSize="32sp" app:backgroundTint="@null" />
+
+        <Button android:id="@+id/btn_3" android:layout_width="100dp" android:layout_height="100dp" android:layout_margin="4dp" android:background="@drawable/borderosa" android:textColor="#000000" android:textSize="32sp" app:backgroundTint="@null" />
+        <Button android:id="@+id/btn_4" android:layout_width="100dp" android:layout_height="100dp" android:layout_margin="4dp" android:background="@drawable/bordeazul" android:textColor="#000000" android:textSize="32sp" app:backgroundTint="@null" />
+        <Button android:id="@+id/btn_5" android:layout_width="100dp" android:layout_height="100dp" android:layout_margin="4dp" android:background="@drawable/bordeamarillo" android:textColor="#000000" android:textSize="32sp" app:backgroundTint="@null" />
+
+        <Button android:id="@+id/btn_6" android:layout_width="100dp" android:layout_height="100dp" android:layout_margin="4dp" android:background="@drawable/bordeamarillo" android:textColor="#000000" android:textSize="32sp" app:backgroundTint="@null" />
+        <Button android:id="@+id/btn_7" android:layout_width="100dp" android:layout_height="100dp" android:layout_margin="4dp" android:background="@drawable/borderosa" android:textColor="#000000" android:textSize="32sp" app:backgroundTint="@null" />
+        <Button android:id="@+id/btn_8" android:layout_width="100dp" android:layout_height="100dp" android:layout_margin="4dp" android:background="@drawable/bordeazul" android:textColor="#000000" android:textSize="32sp" app:backgroundTint="@null" />
+    </GridLayout>
+
+    <!-- PANEL DE VICTORIA (Estilo exacto al de PPT) -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/panelVictoria"
+        android:layout_width="391dp"
+        android:layout_height="735dp"
+        android:background="@drawable/shadow_bottom2"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitle">
+
+        <TextView
+            android:id="@+id/tvWinTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:text="¡Enhorabuena!"
+            android:textSize="48sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivWinGif"
+            android:layout_width="212dp"
+            android:layout_height="179dp"
+            android:layout_marginTop="48dp"
+            android:src="@drawable/palmas"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvWinTitle" />
+
+        <TextView
+            android:id="@+id/tvPoints"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:text="+100 pts"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivWinGif" />
+
+        <Button
+            android:id="@+id/btnVolverMenu"
+            android:layout_width="235dp"
+            android:layout_height="53dp"
+            android:layout_marginTop="56dp"
+            android:backgroundTint="#000000"
+            android:text="VOLVER AL MENU"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            app:cornerRadius="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPoints" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- PANEL DE EMPATE -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/panelEmpate"
+        android:layout_width="391dp"
+        android:layout_height="735dp"
+        android:background="@drawable/shadow_bottom2"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitle">
+
+        <TextView
+            android:id="@+id/tvDrawTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:text="¡Empate!"
+            android:textSize="48sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivDrawGif"
+            android:layout_width="212dp"
+            android:layout_height="179dp"
+            android:layout_marginTop="48dp"
+            android:src="@drawable/guantes"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDrawTitle" />
+
+        <Button
+            android:id="@+id/btnVolverMenuEmpate"
+            android:layout_width="235dp"
+            android:layout_height="53dp"
+            android:layout_marginTop="56dp"
+            android:backgroundTint="#000000"
+            android:text="VOLVER AL MENU"
+            android:textColor="#FFFFFF"
+            app:cornerRadius="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivDrawGif" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
