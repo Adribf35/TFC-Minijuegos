@@ -17,6 +17,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.bumptech.glide.Glide;
 import com.example.miniplay.R;
 import com.example.miniplay.activities.MenuActivity;
+import com.example.miniplay.games.ppt.PiedraPapelTijera;
 import com.example.miniplay.network.ApiService;
 import com.example.miniplay.network.RetrofitClient;
 
@@ -42,13 +43,16 @@ public class TresEnRaya extends AppCompatActivity implements View.OnClickListene
     private int roundCount = 0;
 
     private TextView tvStatus;
-    private TextView tvWinTitle;
-    private TextView tvPoints;
+    ConstraintLayout panelVictoria;
+    ConstraintLayout panelEmpate;
+    ConstraintLayout panelDerrota;
 
-    private ConstraintLayout panelVictoria;
-    private ConstraintLayout panelEmpate;
+    Button boton;
+    Button boton2;
+    Button boton3;
+    int idUsuario;
 
-    private int idUsuario;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,17 +60,16 @@ public class TresEnRaya extends AppCompatActivity implements View.OnClickListene
         setContentView(R.layout.activity_tres_en_raya);
 
         SharedPreferences prefs = getSharedPreferences("app", MODE_PRIVATE);
-        idUsuario = prefs.getInt("id_usuario", -1);
+        idUsuario = prefs.getInt("id_usuario",-1);
 
         tvStatus = findViewById(R.id.tvStatus);
-        tvWinTitle = findViewById(R.id.tvWinTitle);
-        tvPoints = findViewById(R.id.tvPoints);
 
         panelVictoria = findViewById(R.id.panelVictoria);
         panelEmpate = findViewById(R.id.panelEmpate);
+        panelDerrota = findViewById(R.id.panelDerrota);
 
-        Button btnVolver = findViewById(R.id.btnVolverMenu);
-        Button btnVolverEmpate = findViewById(R.id.btnVolverMenuEmpate);
+
+
 
         for (int i = 0; i < 9; i++) {
             String bID = "btn_" + i;
@@ -75,15 +78,15 @@ public class TresEnRaya extends AppCompatActivity implements View.OnClickListene
             buttons[i].setOnClickListener(this);
         }
 
-        btnVolver.setOnClickListener(v -> volverAlMenu());
-        btnVolverEmpate.setOnClickListener(v -> volverAlMenu());
-
-        ImageView ivWinGif = findViewById(R.id.ivWinGif);
-        Glide.with(this).asGif().load(R.drawable.palmas).into(ivWinGif);
-
-        ImageView ivDrawGif = findViewById(R.id.ivDrawGif);
-        Glide.with(this).asGif().load(R.drawable.guantes).into(ivDrawGif);
-
+        boton = findViewById(R.id.button);
+        boton2 = findViewById(R.id.button2);
+        boton3 = findViewById(R.id.button22);
+        ImageView imageView7 = findViewById(R.id.imageView7);
+        Glide.with(this).asGif().load(R.drawable.palmas).into(imageView7);
+        ImageView imageView77 = findViewById(R.id.imageView77);
+        Glide.with(this).asGif().load(R.drawable.guantes).into(imageView77);
+        ImageView imageView777 = findViewById(R.id.imageView777);
+        Glide.with(this).asGif().load(R.drawable._0a2461a_296c_4ea5_a16f_8271f3b7da9b).into(imageView777);
         tvStatus.setText("Tu turno (X)");
     }
 
@@ -244,41 +247,56 @@ public class TresEnRaya extends AppCompatActivity implements View.OnClickListene
 
     private void finalizarJuego(String resultado) {
         userTurn = false;
-        guardarPartida(resultado);
 
         if (resultado.equals("Win")) {
-            tvWinTitle.setText("¡GANASTE!");
-            tvPoints.setText("+100 pts");
+            guardarPartida("Win",100);
+            new Handler(Looper.getMainLooper()).postDelayed(() -> {
 
-            new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+                panelVictoria.setVisibility(View.VISIBLE);
+
+            }, 2000);
+            boton.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void run() {
-                    panelVictoria.setVisibility(View.VISIBLE);
+                public void onClick(View v) {
+                    Intent intent = new Intent(TresEnRaya.this, MenuActivity.class);
+                    startActivity(intent);
                 }
-            }, 500);
+            });
 
         } else if (resultado.equals("Lose")) {
-            tvWinTitle.setText("PERDISTE");
-            tvPoints.setText("+0 pts");
+            guardarPartida("Lose",0);
+            new Handler(Looper.getMainLooper()).postDelayed(() -> {
 
-            new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+                panelDerrota.setVisibility(View.VISIBLE);
+
+            }, 2000);
+
+            boton3.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void run() {
-                    panelVictoria.setVisibility(View.VISIBLE);
+                public void onClick(View v) {
+                    Intent intent = new Intent(TresEnRaya.this, MenuActivity.class);
+                    startActivity(intent);
                 }
-            }, 500);
+            });
 
         } else {
-            new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            guardarPartida("Empate",30);
+            new Handler(Looper.getMainLooper()).postDelayed(() -> {
+
+                panelEmpate.setVisibility(View.VISIBLE);
+
+            }, 2000);
+            boton2.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void run() {
-                    panelEmpate.setVisibility(View.VISIBLE);
+                public void onClick(View v) {
+                    Intent intent = new Intent(TresEnRaya.this, MenuActivity.class);
+                    startActivity(intent);
                 }
-            }, 500);
+            });
         }
     }
 
-    private void guardarPartida(String resultado) {
+    private void guardarPartida(String resultado, int puntuacion) {
         if (idUsuario == -1) {
             Toast.makeText(this, "No se ha encontrado el usuario", Toast.LENGTH_SHORT).show();
             return;
@@ -290,15 +308,7 @@ public class TresEnRaya extends AppCompatActivity implements View.OnClickListene
             json.put("id_usuario", idUsuario);
             json.put("id_juego", 2);
             json.put("fecha_partida", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date()));
-
-            if (resultado.equals("Win")) {
-                json.put("puntuacion", 100);
-            } else if (resultado.equals("Empate")) {
-                json.put("puntuacion", 30);
-            } else {
-                json.put("puntuacion", 0);
-            }
-
+            json.put("puntuacion", puntuacion);
             json.put("resultado", resultado);
 
             RequestBody body = RequestBody.create(
@@ -325,9 +335,5 @@ public class TresEnRaya extends AppCompatActivity implements View.OnClickListene
         }
     }
 
-    private void volverAlMenu() {
-        Intent intent = new Intent(TresEnRaya.this, MenuActivity.class);
-        startActivity(intent);
-        finish();
-    }
+
 }
