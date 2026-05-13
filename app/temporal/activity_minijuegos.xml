@@ -20,49 +20,25 @@
             android:id="@+id/imageView10"
             android:layout_width="122dp"
             android:layout_height="112dp"
-            android:layout_marginTop="33dp"
-            android:layout_marginEnd="256dp"
+            android:layout_marginStart="90dp"
+            android:layout_marginTop="28dp"
             android:background="@drawable/shadow_bottom2"
             android:padding="20px"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView11"
+            app:layout_constraintStart_toEndOf="@+id/imageView5"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ter" />
 
         <TextView
             android:id="@+id/textView19"
             android:layout_width="176dp"
             android:layout_height="35dp"
+            android:layout_marginStart="33dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="229dp"
             android:gravity="center"
             android:text="Tres en raya"
             android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView11"
             app:layout_constraintTop_toBottomOf="@+id/imageView10" />
-
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="176dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="12dp"
-            android:gravity="center"
-            android:text="Piedra Papel Tijera"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView5" />
-
-        <ImageView
-            android:id="@+id/imageView6"
-            android:layout_width="122dp"
-            android:layout_height="112dp"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="38dp"
-            android:background="@drawable/shadow_bottom2"
-            android:padding="20px"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ppt" />
 
         <ImageView
             android:id="@+id/imageView5"
